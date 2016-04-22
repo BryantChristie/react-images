@@ -11,6 +11,7 @@ class Gallery extends Component {
 		};
 
 		this.closeLightbox = this.closeLightbox.bind(this);
+		this.deleteImage = this.deleteImage.bind(this);
 		this.gotoNext = this.gotoNext.bind(this);
 		this.gotoPrevious = this.gotoPrevious.bind(this);
 		this.openLightbox = this.openLightbox.bind(this);
@@ -27,6 +28,9 @@ class Gallery extends Component {
 			currentImage: 0,
 			lightboxIsOpen: false,
 		});
+	}
+	deleteImage () {
+		console.log('do something to handle deleting image');
 	}
 	gotoPrevious () {
 		this.setState({
@@ -67,6 +71,7 @@ class Gallery extends Component {
 					onClickPrev={this.gotoPrevious}
 					onClickNext={this.gotoNext}
 					onClose={this.closeLightbox}
+					onDelete={this.deleteImage}
 					theme={this.props.theme}
 				/>
 			</div>

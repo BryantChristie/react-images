@@ -4,7 +4,20 @@ var gulp = require('gulp'),
 var taskConfig = {
 
 	component: {
-		name: 'Lightbox'
+		file: 'Lightbox.js',
+		name: 'Lightbox',
+		dependencies: [
+			'react',
+			'react-addons-transition-group',
+			'react-dom',
+			'react-jss',
+			'react-swipeable',
+			'jss',
+			'jss-camel-case',
+			'jss-nested',
+			'jss-px',
+			'jss-vendor-prefixer'
+		]
 	},
 
 	example: {
@@ -23,7 +36,8 @@ var taskConfig = {
 		],
 		less: [
 			'example.less'
-		]
+		],
+		port: 9000
 	}
 
 };

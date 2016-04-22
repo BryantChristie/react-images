@@ -163,6 +163,19 @@ class Lightbox extends Component {
 		);
 	}
 
+	renderDeleteButton() {
+		if (!this.props.showDeleteButton) return null;
+		const { classes } = this.props.sheet;
+
+		return (
+			<div className={classes.deleteBar}>
+				<button title="Delete Image" className={classes.deleteButton} onClick={this.props.onDelete}>
+					<Icon type="delete"/>
+				</button>
+			</div>
+		);
+	}
+
 	renderDialog () {
 		if (!this.props.isOpen) return null;
 		const { classes } = this.props.sheet;
@@ -177,7 +190,10 @@ class Lightbox extends Component {
 			>
 				<span className={classes.contentHeightShim} />
 				<div className={classes.content}>
-					{this.renderCloseButton()}
+					<div className={classes.nav}>
+						{this.renderDeleteButton()}
+						{this.renderCloseButton()}
+					</div>
 					{this.renderImages()}
 				</div>
 				{this.renderArrowPrev()}
@@ -271,8 +287,10 @@ Lightbox.propTypes = {
 	onClickPrev: PropTypes.func.isRequired,
 	onClickShowNextImage: PropTypes.bool,
 	onClose: PropTypes.func.isRequired,
+	onDelete: PropTypes.func.isRequired,
 	sheet: PropTypes.object,
 	showCloseButton: PropTypes.bool,
+	showDeleteButton: PropTypes.bool,
 	showImageCount: PropTypes.bool,
 	width: PropTypes.number,
 };
@@ -282,6 +300,7 @@ Lightbox.defaultProps = {
 	currentImage: 0,
 	onClickShowNextImage: true,
 	showCloseButton: true,
+	showDeleteButton: true,
 	showImageCount: true,
 	width: 900,
 };
